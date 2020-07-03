@@ -13,7 +13,7 @@
     "format:check": "prettier --config .prettierrc.yaml --list-different '{src,test}/**/*.{ts,tsx,js,jsx,html}'",
     "format": "prettier --config .prettierrc.yaml --write '{src,test}/**/*.{ts,tsx,js,jsx,html}'",
     "lint": "eslint '{src,test}/**/*.{ts,tsx}'",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist/mindgap"
   },
   "author": "",
   "license": "ISC",

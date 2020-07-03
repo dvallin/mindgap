@@ -32,7 +32,7 @@ module.exports = {
     main: ['./src/index'],
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist/mindgap'),
     filename: '[name].js',
   },
   devtool: false,

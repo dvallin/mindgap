@@ -1,14 +1,20 @@
 {
-  "background_color": "purple",
+  "name": "Mindgap",
+  "short_name": "Mindgap",
   "description": "Mindgap",
   "display": "fullscreen",
+  "background_color": "#317EFB",
+  "theme_color": "#317EFB",
   "icons": [
     {
-      "src": "icon/brain_s.png",
+      "src": "img/brain_s.png",
       "sizes": "192x192",
       "type": "image/png"
+    },
+    {
+      "src": "img/brain.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
-  ],
-  "name": "Mindgap",
-  "short_name": "Mindgap"
+  ]
 }

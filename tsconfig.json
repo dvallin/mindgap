@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "target": "es6",
+      "jsx": "react",
+      "sourceMap": true,
+      "declaration": true,
+  
+      "strict": true,
+      "noImplicitAny": false,
+      "noImplicitThis": false,
+      "noUnusedParameters": true,
+      "noImplicitReturns": true,
+      "noFallthroughCasesInSwitch": true
+    }
+  }
+  

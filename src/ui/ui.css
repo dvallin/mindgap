@@ -1,0 +1,12 @@
+.field:focus {
+  border: 1;
+  box-shadow: 1;
+}
+
+.field {
+  padding: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  border: none;
+  box-shadow: none;
+}

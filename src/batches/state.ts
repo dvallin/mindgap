@@ -17,31 +17,7 @@ export const removedRecipe = (id: Id, recipe: Id): AddRecipe => ({ type: 'ADD_RE
 
 export type BatchAction = RemoveRecipe | AddRecipe
 
-export const initialState = (): BatchState => ({
-  batchCache: {
-    batch1: {
-      name: 'My Special Kombuch',
-      description: 'default kombucha with some chilis',
-      date: '2020-07-24T11:44:41.293Z',
-      recipe: {
-        id: 'recipe1',
-        scale: 2,
-      },
-      actions: [],
-    },
-    done: {
-      name: 'My First Kombuch',
-      description: 'default kombucha',
-      date: '2020-07-25T11:44:41.293Z',
-      recipe: {
-        id: 'recipe1',
-        scale: 0.1,
-      },
-      actions: [],
-      done: '2020-07-27T11:44:41.293Z',
-    },
-  },
-})
+export const initialState = (): BatchState => ({ batchCache: {} })
 
 export const batches = (state: BatchState = initialState(), action: BatchAction): BatchState => {
   return produce(state, (draft) => {
@@ -51,7 +27,7 @@ export const batches = (state: BatchState = initialState(), action: BatchAction)
         break
       }
       case 'REMOVE_RECIPE': {
-        Option.of(draft.batchCache[action.id]).map((batch) => (batch.recipe = undefined))
+        Option.of(draft.batchCache[action.id]).map((batch) => delete batch.recipe)
         break
       }
     }

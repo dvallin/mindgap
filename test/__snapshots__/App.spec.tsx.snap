@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Component mounts 1`] = `
+<div
+  className="container"
+>
+  <section
+    className="section"
+  >
+    <nav
+      className="level"
+    >
+      <div
+        className="level-item has-text-centered"
+      >
+        <NavLink
+          activeClassName="is-active"
+          exact={true}
+          to="/batches?done=false"
+        >
+          <p
+            className="heading"
+          >
+            Active
+          </p>
+          <p
+            className="title"
+          >
+            1
+          </p>
+        </NavLink>
+      </div>
+      <div
+        className="level-item has-text-centered"
+      >
+        <NavLink
+          activeClassName="is-active"
+          exact={true}
+          to="/batches?done=true"
+        >
+          <p
+            className="heading"
+          >
+            Done
+          </p>
+          <p
+            className="title"
+          >
+            2
+          </p>
+        </NavLink>
+      </div>
+      <p
+        className="level-item has-text-centered"
+      >
+        <NavLink
+          activeClassName="is-active"
+          exact={true}
+          to="/"
+        >
+          <img
+            alt="Mindgap"
+            style={
+              Object {
+                "height": "60px",
+              }
+            }
+          />
+        </NavLink>
+      </p>
+      <div
+        className="level-item has-text-centered"
+      >
+        <NavLink
+          activeClassName="is-active"
+          exact={true}
+          to="/batches"
+        >
+          <p
+            className="heading"
+          >
+            Batches
+          </p>
+          <p
+            className="title"
+          >
+            3
+          </p>
+        </NavLink>
+      </div>
+      <div
+        className="level-item has-text-centered"
+      >
+        <NavLink
+          activeClassName="is-active"
+          exact={true}
+          to="/recipes"
+        >
+          <p
+            className="heading"
+          >
+            Recipes
+          </p>
+          <p
+            className="title"
+          >
+            1
+          </p>
+        </NavLink>
+      </div>
+    </nav>
+  </section>
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/"
+  />
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/batches"
+  />
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/recipes"
+  />
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/recipes/:id?"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/batches/:id?"
+  />
+</div>
+`;

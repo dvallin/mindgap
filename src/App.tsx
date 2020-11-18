@@ -57,7 +57,7 @@ export const App = (props: Props): JSX.Element => (
     </section>
     <Route exact path="/" component={LandingPage} />
     <Route exact path="/batches" component={BatchesPage} />
-    <Route exact path="/recipes/" component={AllRecipesPage} />
+    <Route exact path="/recipes" component={AllRecipesPage} />
     <Route exact path="/recipes/:id?" component={RecipePage} />
     <Route exact path="/batches/:id?" component={BatchPage} />
   </div>

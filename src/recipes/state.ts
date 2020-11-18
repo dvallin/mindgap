@@ -40,27 +40,7 @@ export const updateStep = (id: string, index: number, step: Step): UpdateStep =>
 export type RecipeAction = UpdateName | AddIngredient | DeleteIngredient | UpdateIngredient | AddStep | UpdateStep
 
 export const initialState = (): RecipeState => ({
-  recipeCache: {
-    recipe1: {
-      name: 'Kombucha',
-      description: 'default kombucha',
-      date: '2020-07-27T11:44:41.293Z',
-      ingredients: [
-        { name: 'black tea', value: 10, unit: 'gram' },
-        { name: 'water', value: 1, unit: 'liter' },
-        { name: 'sugar', value: 100, unit: 'gram' },
-        { name: 'kumbucha', value: 100, unit: 'milliliter' },
-        { name: 'SCOBY' },
-      ],
-      steps: [
-        { kind: 'addition', ingredients: [{ name: 'black tea' }, { name: 'water' }, { name: 'sugar' }] },
-        { kind: 'manipulation', note: 'let tea steep for 10 minutes' },
-        { kind: 'measurement', note: 'check temperatur is below', value: '40', unit: 'celsius' },
-        { kind: 'addition', ingredients: [{ name: 'black tea' }, { name: 'water' }, { name: 'sugar' }] },
-        { kind: 'wait', duration: 'P7D' },
-      ],
-    },
-  },
+  recipeCache: {},
 })
 
 export const recipes = (state: RecipeState = initialState(), action: RecipeAction): RecipeState => {

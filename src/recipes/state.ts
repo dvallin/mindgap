@@ -18,6 +18,8 @@ export const updateName = (id: string, name: Name): UpdateName => ({
 })
 export type AddIngredient = BaseAction<'ADD_INGREDIENT'> & { id: string; ingredient: Ingredient }
 export const addIngredient = (id: string, ingredient: Ingredient): AddIngredient => ({ type: 'ADD_INGREDIENT', id, ingredient })
+export type DeleteIngredient = BaseAction<'DELETE_INGREDIENT'> & { id: string; index: number }
+export const deleteIngredient = (id: string, index: number): DeleteIngredient => ({ type: 'DELETE_INGREDIENT', id, index })
 export type UpdateIngredient = BaseAction<'UPDATE_INGREDIENT'> & { id: string; index: number; ingredient: Ingredient }
 export const updateIngredient = (id: string, index: number, ingredient: Ingredient): UpdateIngredient => ({
   type: 'UPDATE_INGREDIENT',
@@ -35,13 +37,14 @@ export const updateStep = (id: string, index: number, step: Step): UpdateStep =>
   step,
 })
 
-export type RecipeAction = UpdateName | AddIngredient | UpdateIngredient | AddStep | UpdateStep
+export type RecipeAction = UpdateName | AddIngredient | DeleteIngredient | UpdateIngredient | AddStep | UpdateStep
 
 export const initialState = (): RecipeState => ({
   recipeCache: {
     recipe1: {
       name: 'Kombucha',
       description: 'default kombucha',
+      date: '2020-07-27T11:44:41.293Z',
       ingredients: [
         { name: 'black tea', value: 10, unit: 'gram' },
         { name: 'water', value: 1, unit: 'liter' },
@@ -54,7 +57,7 @@ export const initialState = (): RecipeState => ({
         { kind: 'manipulation', note: 'let tea steep for 10 minutes' },
         { kind: 'measurement', note: 'check temperatur is below', value: '40', unit: 'celsius' },
         { kind: 'addition', ingredients: [{ name: 'black tea' }, { name: 'water' }, { name: 'sugar' }] },
-        { kind: 'wait', min: 'P7D', max: 'P8D' },
+        { kind: 'wait', duration: 'P7D' },
       ],
     },
   },
@@ -72,6 +75,10 @@ export const recipes = (state: RecipeState = initialState(), action: RecipeActio
       }
       case 'ADD_INGREDIENT': {
         Option.of(draft.recipeCache[action.id]).map((recipe) => recipe.ingredients.push(action.ingredient))
+        break
+      }
+      case 'DELETE_INGREDIENT': {
+        Option.of(draft.recipeCache[action.id]).map((recipe) => recipe.ingredients.splice(action.index, 1))
         break
       }
       case 'UPDATE_INGREDIENT': {

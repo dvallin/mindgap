@@ -29,7 +29,7 @@ export class BatchPage extends React.Component<Props> {
           <article>
             <div className="tile is-ancestor">
               <div className="tile is-8 is-vertical is-parent">
-                <div className="tile is-child box">
+                <div className="tile is-child">
                   <Name {...batch} />
                 </div>
               </div>

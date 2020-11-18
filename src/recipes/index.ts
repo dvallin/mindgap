@@ -1,9 +1,9 @@
 import { Draft } from 'immer'
-import { Name } from '../common'
+import { Event, Name } from '../common'
 import { Ingredient, scale as scaleIngredient } from '../ingredients'
 import { Step } from '../steps'
 
-export interface Recipe extends Name {
+export interface Recipe extends Name, Event {
   ingredients: Ingredient[]
   steps: Step[]
 }

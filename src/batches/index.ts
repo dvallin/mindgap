@@ -2,7 +2,7 @@ import { Event, Id, IsoDate, Name } from '../common'
 import { Step } from '../steps'
 
 export type Action = Event & Step
-export interface Batch extends Name {
+export interface Batch extends Name, Event {
   recipe?: {
     id: Id
     scale: number

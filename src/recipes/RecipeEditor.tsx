@@ -11,12 +11,13 @@ import IngredientsEditor from '../ingredients/IngredientsEditor'
 import { Step } from '../steps'
 import StepsEditor from '../steps/StepsEditor'
 import { Dispatch, State } from '../store'
-import { addIngredient, addStep, updateIngredient, updateName, updateStep } from './state'
+import { addIngredient, addStep, deleteIngredient, updateIngredient, updateName, updateStep } from './state'
 
 export interface Callbacks {
+  updateName: (name: Name) => void
   addIngredient: (name: string) => void
   updateIngredient: (index: number, ingredient: Ingredient) => void
-  updateName: (name: Name) => void
+  deleteIngredient: (index: number) => void
   addStep: (step: Step) => void
   updateStep: (index: number, step: Step) => void
 }
@@ -37,7 +38,12 @@ export const RecipeComponent = (props: Props): JSX.Element =>
       <>
         <NameEditor {...recipe} updateName={props.updateName} />
         <div className="content">
-          <IngredientsEditor {...recipe} addIngredient={props.addIngredient} updateIngredient={props.updateIngredient} />
+          <IngredientsEditor
+            {...recipe}
+            addIngredient={props.addIngredient}
+            updateIngredient={props.updateIngredient}
+            deleteIngredient={props.deleteIngredient}
+          />
           <StepsEditor {...recipe} addStep={props.addStep} updateStep={props.updateStep} />
         </div>
       </>
@@ -46,9 +52,10 @@ export const RecipeComponent = (props: Props): JSX.Element =>
   )
 
 export const dispatchToProps = (dispatch: Dispatch, props: OuterProps): Callbacks => ({
+  updateName: (name) => dispatch(updateName(props.id, name)),
   addIngredient: (name) => dispatch(addIngredient(props.id, { name })),
   updateIngredient: (index, ingredient) => dispatch(updateIngredient(props.id, index, ingredient)),
-  updateName: (name) => dispatch(updateName(props.id, name)),
+  deleteIngredient: (index) => dispatch(deleteIngredient(props.id, index)),
   addStep: (step) => dispatch(addStep(props.id, step)),
   updateStep: (index, step) => dispatch(updateStep(props.id, index, step)),
 })

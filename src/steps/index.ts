@@ -25,7 +25,10 @@ export interface Measurement {
   value: string
   unit: Unit
 }
-export type Wait = { kind: 'wait' } & ({ min: IsoDuration; max: IsoDuration } | { duration: IsoDuration })
+export interface Wait {
+  kind: 'wait'
+  duration: IsoDuration
+}
 
 export interface Observation {
   kind: 'observation'

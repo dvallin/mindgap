@@ -11,9 +11,7 @@ export class RecipePage extends React.Component<Props> {
       (id) => (
         <section className="section">
           <article>
-            <div className="box">
-              <RecipeEditor id={id} />
-            </div>
+            <RecipeEditor id={id} />
           </article>
         </section>
       ),

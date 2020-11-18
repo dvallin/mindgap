@@ -1,3 +1,5 @@
+import { DateTime } from 'luxon'
+
 export type Unit = string
 export type IsoDate = string
 export type IsoDuration = string
@@ -14,4 +16,8 @@ export interface Note {
 export interface Name {
   name: string
   description: string
+}
+
+export function daysAgo(date: IsoDate): number {
+  return Math.floor(Math.abs(DateTime.fromISO(date).diffNow('days').days))
 }

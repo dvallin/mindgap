@@ -9,6 +9,14 @@ export interface Event {
   date: IsoDate
 }
 
+export function matches<K extends string>(value: Record<K, string>, keys: K[], query: string): boolean {
+  const keywords = query.split(' ')
+  return keys.some((key) => {
+    const v = value[key].toLowerCase()
+    return keywords.some((keyword) => v.includes(keyword))
+  })
+}
+
 export const event = (): Event => ({ date: new Date().toISOString() })
 
 export interface Note {

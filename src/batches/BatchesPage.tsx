@@ -3,6 +3,7 @@ import * as React from 'react'
 import { RouteChildrenProps } from 'react-router'
 import ActiveBatches from './ActiveBatches'
 import AllBatches from './AllBatches'
+import CreateBatch from './CreateBatch'
 import DoneBatches from './DoneBatches'
 
 export default (props: RouteChildrenProps): JSX.Element => {
@@ -27,5 +28,10 @@ export default (props: RouteChildrenProps): JSX.Element => {
       </>
     )
   )
-  return <section className="section">{body}</section>
+  return (
+    <section className="section">
+      {body}
+      <CreateBatch />
+    </section>
+  )
 }

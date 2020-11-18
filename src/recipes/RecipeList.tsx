@@ -17,7 +17,7 @@ export class RecipeList extends React.Component<Props> {
           <div className="media-content">
             <div className="content">
               <p>
-                <strong>{recipe.name}</strong> <small>{daysAgo(recipe.date)} days ago</small>
+                <strong>{recipe.name || "unnamed recipe"}</strong> <small>{daysAgo(recipe.date)} days ago</small>
                 <br />
                 {recipe.description}
               </p>

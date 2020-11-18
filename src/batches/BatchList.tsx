@@ -18,7 +18,7 @@ export class BatchList extends React.Component<Props> {
           <div className="media-content">
             <div className="content">
               <p>
-                <strong>{batch.name}</strong>{' '}
+                <strong>{batch.name || "unnamed batch"}</strong>{' '}
                 {Option.of(batch.done).unwrap(
                   (done) => (
                     <small>finished {daysAgo(done)} days ago</small>

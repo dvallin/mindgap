@@ -13,18 +13,16 @@ import { Recipe, scale } from '../recipes'
 import produce from 'immer'
 
 export interface InnerProps {
-  resolved: Option<{
-    batch: Batch
-    recipe: Recipe
-  }>
+  batch: Option<Batch>
+  recipe: Option<Recipe>
 }
 
 export type Props = InnerProps & RouteComponentProps<{ id?: string }>
 
 export class BatchPage extends React.Component<Props> {
   render(): JSX.Element {
-    return this.props.resolved.unwrap(
-      ({ batch, recipe }) => (
+    return this.props.batch.unwrap(
+      (batch) => (
         <section className="section">
           <article>
             <div className="tile is-ancestor">
@@ -35,7 +33,14 @@ export class BatchPage extends React.Component<Props> {
               </div>
               <div className="tile is-parent">
                 <div className="tile is-child box">
-                  <RecipeComponent {...recipe} />
+                  {this.props.recipe.unwrap(
+                    (recipe) => (
+                      <RecipeComponent {...recipe} />
+                    ),
+                    () => (
+                      <></>
+                    )
+                  )}
                 </div>
               </div>
             </div>
@@ -47,14 +52,16 @@ export class BatchPage extends React.Component<Props> {
   }
 }
 
-export const stateToProps = (state: State, props: RouteComponentProps<{ id?: string }>): InnerProps => ({
-  resolved: Option.of(props.match.params.id)
-    .map((id) => state.batches.batchCache[id])
-    .flatMap((batch) =>
-      Option.of(batch.recipe)
-        .flatMap(({ id, scale: s }) => Option.of(state.recipes.recipeCache[id]).map((recipe) => produce(recipe, (d) => scale(d, s))))
-        .map((recipe) => ({ batch, recipe }))
+export const stateToProps = (state: State, props: RouteComponentProps<{ id?: string }>): InnerProps => {
+  const batch = Option.of(props.match.params.id).map((id) => state.batches.batchCache[id])
+  return {
+    batch,
+    recipe: batch.flatMap((batch) =>
+      Option.of(batch.recipe).flatMap(({ id, scale: s }) =>
+        Option.of(state.recipes.recipeCache[id]).map((recipe) => produce(recipe, (d) => scale(d, s)))
+      )
     ),
-})
+  }
+}
 
 export default connect(stateToProps)(BatchPage)

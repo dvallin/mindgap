@@ -10,6 +10,9 @@ export interface RecipeState {
   recipeCache: { [id in Id]: Recipe }
 }
 
+export type AddRecipe = BaseAction<'ADD_RECIPE'> & { id: string; recipe: Recipe }
+export const addRecipe = (id: string, recipe: Recipe): AddRecipe => ({ type: 'ADD_RECIPE', id, recipe })
+
 export type UpdateName = BaseAction<'UPDATE_NAME'> & { id: string; name: Name }
 export const updateName = (id: string, name: Name): UpdateName => ({
   type: 'UPDATE_NAME',
@@ -37,7 +40,7 @@ export const updateStep = (id: string, index: number, step: Step): UpdateStep =>
   step,
 })
 
-export type RecipeAction = UpdateName | AddIngredient | DeleteIngredient | UpdateIngredient | AddStep | UpdateStep
+export type RecipeAction = AddRecipe | UpdateName | AddIngredient | DeleteIngredient | UpdateIngredient | AddStep | UpdateStep
 
 export const initialState = (): RecipeState => ({
   recipeCache: {},
@@ -51,6 +54,10 @@ export const recipes = (state: RecipeState = initialState(), action: RecipeActio
           recipe.description = action.name.description
           recipe.name = action.name.name
         })
+        break
+      }
+      case 'ADD_RECIPE': {
+        draft.recipeCache[action.id] = action.recipe
         break
       }
       case 'ADD_INGREDIENT': {

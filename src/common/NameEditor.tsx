@@ -13,6 +13,7 @@ export class NameEditor extends React.Component<Props> {
       <>
         <h1 className="title">
           <EditField
+          placeholder="Name"
             value={this.props.name}
             onChange={(value) => this.props.updateName({ name: value, description: this.props.description })}
             removePadding
@@ -20,6 +21,7 @@ export class NameEditor extends React.Component<Props> {
         </h1>
         <h2 className="subtitle">
           <EditField
+          placeholder="Description"
             value={this.props.description}
             onChange={(value) => this.props.updateName({ name: this.props.name, description: value })}
             removePadding

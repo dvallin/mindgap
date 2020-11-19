@@ -1,8 +1,9 @@
 import { createShallowMount, mockRouteComponentProps } from './react-test-utils'
-import { testBatch, testDate, testRecipe, testState } from './test-utils'
+import { testBatch, testDate, testRecipe } from './test-utils'
 
 import { App, stateToProps } from '../src/App'
 import produce from 'immer'
+import { initialState } from '../src/store'
 
 describe('App', () => {
   const mount = createShallowMount(App, { batches: 3, batchesDone: 2, recipes: 1, ...mockRouteComponentProps({}) })
@@ -14,7 +15,7 @@ describe('App', () => {
   })
 
   describe('Store Connection', () => {
-    const state = produce(testState, (s) => {
+    const state = produce(initialState, (s) => {
       s.batches.batchCache = {
         batch: testBatch,
         batch2: testBatch,

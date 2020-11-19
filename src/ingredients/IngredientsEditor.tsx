@@ -85,7 +85,7 @@ export class IngredientsEditor extends React.Component<Props> {
             <tfoot>
               <tr>
                 <td colSpan={3}>
-                  <SubmitField placeholder="name" buttonText="Add Ingredient" onSubmit={(name) => this.props.addIngredient(name)} />
+                  <SubmitField placeholder="name" buttonText="add" onSubmit={(name) => this.props.addIngredient(name)} />
                 </td>
               </tr>
             </tfoot>

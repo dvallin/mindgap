@@ -19,8 +19,8 @@ export class EditField extends React.Component<Props> {
         className="input editable-field"
         size={Option.of(this.props.value)
           .filter(() => this.props.narrow === true)
-          .map((s) => s.length)
-          .getOrElse(0)}
+          .map((s) => s.length || 1)
+          .getOrElse(undefined)}
         style={this.props.removePadding ? { padding: 0 } : {}}
         type={this.props.type || 'text'}
         placeholder={this.props.placeholder}

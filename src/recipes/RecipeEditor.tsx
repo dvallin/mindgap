@@ -32,7 +32,7 @@ export interface OuterProps {
 
 export type Props = OuterProps & Callbacks & InnerProps
 
-export const RecipeComponent = (props: Props): JSX.Element =>
+export const RecipeEditor = (props: Props): JSX.Element =>
   props.recipe.unwrap(
     (recipe) => (
       <>
@@ -64,4 +64,4 @@ export const stateToProps = (state: State, props: OuterProps): InnerProps => ({
   recipe: Option.of(state.recipes.recipeCache[props.id]),
 })
 
-export default connect(stateToProps, dispatchToProps)(RecipeComponent)
+export default connect(stateToProps, dispatchToProps)(RecipeEditor)

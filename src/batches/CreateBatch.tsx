@@ -15,7 +15,10 @@ export type Props = Callbacks & RouteChildrenProps
 export const CreateBatch = (props: Props): JSX.Element => {
   return (
     <button className="button is-info" onClick={props.add}>
-      create new batch
+      <span>new batch</span>
+      <span className="icon is-small">
+        <i className="fas fa-plus" aria-hidden="true"></i>
+      </span>
     </button>
   )
 }

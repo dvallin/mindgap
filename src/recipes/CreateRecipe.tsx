@@ -15,7 +15,10 @@ export type Props = Callbacks & RouteChildrenProps
 export const CreateRecipe = (props: Props): JSX.Element => {
   return (
     <button className="button is-info" onClick={props.add}>
-      create new recipe
+      <span>new recipe</span>
+      <span className="icon is-small">
+        <i className="fas fa-plus" aria-hidden="true"></i>
+      </span>
     </button>
   )
 }

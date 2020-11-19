@@ -117,7 +117,7 @@ export class StepsEditor extends React.Component<Props> {
               <tr>
                 <td colSpan={3}>
                   <button className="button is-info" onClick={() => this.props.addStep(empty('addition'))}>
-                    Add Step
+                    add
                   </button>
                 </td>
               </tr>

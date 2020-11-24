@@ -1,5 +1,3 @@
-import { DateTime } from 'luxon'
-
 export type Unit = string
 export type IsoDate = string
 export type IsoDuration = string
@@ -11,9 +9,9 @@ export interface Event {
 
 export function matches<K extends string>(value: Record<K, string>, keys: K[], query: string): boolean {
   const keywords = query.split(' ')
-  return keys.some((key) => {
+  return keys.some(key => {
     const v = value[key].toLowerCase()
-    return keywords.some((keyword) => v.includes(keyword))
+    return keywords.some(keyword => v.includes(keyword))
   })
 }
 
@@ -23,13 +21,7 @@ export interface Note {
   note: string
 }
 
-export interface Name {
-  name: string
-  description: string
-}
-
-export const name = (): Name => ({ name: '', description: '' })
-
 export function daysAgo(date: IsoDate): number {
-  return Math.floor(Math.abs(DateTime.fromISO(date).diffNow('days').days))
+  const d = Date.now() - new Date(date).getTime()
+  return Math.floor(d / (1000 * 60 * 60 * 24))
 }

@@ -1,31 +1,21 @@
-import * as React from 'react'
+import { h, Fragment } from 'preact'
 
 import { Recipe } from '.'
 
-import Name from '../common/Name'
-import IngredientList from '../ingredients/IngredientsList'
-import StepsList from '../steps/StepsList'
+import Name from '../name/name'
+import IngredienstList from '../ingredients/list'
+import StepsList from '../steps/list'
 
-export interface Callbacks {
-  addIngredient: (name: string) => void
-}
-
-export interface InnerProps {
+export interface Props {
   recipe: Recipe
 }
 
-export interface OuterProps {
-  recipe: Recipe
-}
-
-export type Props = OuterProps & Callbacks & InnerProps
-
-export default (props: Recipe): JSX.Element => (
-  <>
-    <Name {...props} />
+export default (props: Props) => (
+  <Fragment>
+    <Name name={props.recipe} />
     <div className="content">
-      <IngredientList {...props} />
-      <StepsList {...props} />
+      <IngredienstList ingredients={props.recipe.ingredients} />
+      <StepsList steps={props.recipe.steps} />
     </div>
-  </>
+  </Fragment>
 )

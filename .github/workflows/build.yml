@@ -14,6 +14,10 @@ jobs:
           npm install
           npm run build
 
+      - name: Test 🧪
+        run: |
+          npm test
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:

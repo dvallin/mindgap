@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders 1`] = `
+<div
+  id="app"
+>
+  <Provider
+    initial={[Function]}
+    listeners={
+      Array [
+        [Function],
+      ]
+    }
+  >
+    <Component />
+    <u>
+      <Component
+        path="/batches/:id"
+      />
+      <Component
+        path="/batches"
+      />
+      <Component
+        path="/recipes/:id"
+      />
+      <Component
+        path="/recipes"
+      />
+      <Component
+        path="/"
+      />
+      <Component
+        default={true}
+      />
+    </u>
+  </Provider>
+</div>
+`;

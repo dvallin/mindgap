@@ -1,8 +1,8 @@
 import { h } from 'preact'
-import { Link } from 'preact-router'
 
 import { Recipe } from '..'
 import { daysAgo, Id } from '../../common'
+import Link from '../../link'
 
 export interface Props {
   recipeId: Id
@@ -13,7 +13,7 @@ export default (props: Props) => {
   const { recipe, recipeId } = props
   return (
     <article className="media">
-      <Link href={`/recipes/${recipeId}`} style={{ color: 'inherit', textDecoration: 'inherit' }}>
+      <Link path={`/recipes/${recipeId}`} inherit>
         <div className="media-content">
           <div className="content">
             <p>

@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import { Link } from 'preact-router'
+import Link from '../link'
 import { useApplicationState } from '../state'
 
 import icon from '../assets/icons/large.svg'
@@ -13,30 +13,30 @@ export default () => {
     <section className="section">
       <nav className="level">
         <div className="level-item has-text-centered">
-          <Link href="/batches?done=false">
+          <Link path="/batches" params={{ done: 'false' }}>
             <p className="heading">Active</p>
             <p className="title">{batches - batchesDone}</p>
           </Link>
         </div>
         <div className="level-item has-text-centered">
-          <Link href="/batches?done=true">
+          <Link path="/batches" params={{ done: 'true' }}>
             <p className="heading">Done</p>
             <p className="title">{batchesDone}</p>
           </Link>
         </div>
         <p className="level-item has-text-centered">
-          <Link href="/">
+          <Link path="/">
             <img src={icon as string} alt="Mindgap" style={{ height: '60px' }} />
           </Link>
         </p>
         <div className="level-item has-text-centered">
-          <Link href="/batches">
+          <Link path="/batches">
             <p className="heading">Batches</p>
             <p className="title">{batches}</p>
           </Link>
         </div>
         <div className="level-item has-text-centered">
-          <Link href="/recipes">
+          <Link path="/recipes">
             <p className="heading">Recipes</p>
             <p className="title">{recipes}</p>
           </Link>

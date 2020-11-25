@@ -1,9 +1,9 @@
 import { h } from 'preact'
-import { Link } from 'preact-router'
 import { Option } from 'lazy-space'
 
 import { Batch } from '..'
 import { daysAgo, Id } from '../../common'
+import Link from '../../link'
 
 export interface Props {
   batchId: Id
@@ -14,7 +14,7 @@ export default (props: Props) => {
   const { batch, batchId } = props
   return (
     <article className="media">
-      <Link href={`/batches/${batchId}`} style={{ color: 'inherit', textDecoration: 'inherit' }}>
+      <Link path={`/batches/${batchId}`} inherit>
         <div className="media-content">
           <div className="content">
             <p>

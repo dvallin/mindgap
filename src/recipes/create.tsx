@@ -1,8 +1,8 @@
 import { h } from 'preact'
-import { route } from 'preact-router'
 import { v4 } from 'uuid'
 
 import { recipe, addRecipe } from '.'
+import { route } from '../path'
 import { useApplicationState } from '../state'
 
 export default () => {
@@ -16,7 +16,7 @@ export default () => {
         route(`/recipes/${id}`)
       }}
     >
-      <span>new batch</span>
+      <span>new recipe</span>
       <span className="icon is-small">
         <i className="fas fa-plus" aria-hidden="true"></i>
       </span>

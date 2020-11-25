@@ -1,3 +1,5 @@
+import dayjs from 'dayjs'
+
 export type Unit = string
 export type IsoDate = string
 export type IsoDuration = string
@@ -22,6 +24,5 @@ export interface Note {
 }
 
 export function daysAgo(date: IsoDate): number {
-  const d = Date.now() - new Date(date).getTime()
-  return Math.floor(d / (1000 * 60 * 60 * 24))
+  return dayjs().diff(dayjs(date), 'd')
 }

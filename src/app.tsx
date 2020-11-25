@@ -12,19 +12,20 @@ import RecipePage from './pages/recipe-page'
 
 import { Provider } from './state'
 import { loadState, writeState } from './local-storage'
+import { makePath } from './path'
 
 export default () => (
   <div id="app">
     <Provider initialState={loadState} onChange={writeState}>
       <Header />
       <Router>
-        <BatchPage path="/batches/:id" />
-        <BatchesPage path="/batches" />
+        <BatchPage path={makePath('/batches/:id')} />
+        <BatchesPage path={makePath('/batches')} />
 
-        <RecipePage path="/recipes/:id" />
-        <RecipesPage path="/recipes" />
+        <RecipePage path={makePath('/recipes/:id')} />
+        <RecipesPage path={makePath('/recipes')} />
 
-        <LandingPage path="/" />
+        <LandingPage path={makePath('/')} />
         <NotFound default />
       </Router>
     </Provider>

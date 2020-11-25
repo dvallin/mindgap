@@ -1,8 +1,8 @@
 import { h } from 'preact'
-import { route } from 'preact-router'
 import { v4 } from 'uuid'
 
 import { batch, addBatch } from '.'
+import { route } from '../path'
 import { useApplicationState } from '../state'
 
 export default () => {

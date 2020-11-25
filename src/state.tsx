@@ -20,15 +20,21 @@ export const initialState: State = {
 
 export const ApplicationState = createContext<[State, Mutate<State>]>([initialState, () => undefined])
 
-export type Listener = (state: State) => void
-export function Provider<T>(props: RenderableProps<T & { listeners: Listener[]; initial: () => State }>) {
-  const [state, mutate] = useReducer<State, Mutation<State>>((state, mutation) => {
-    const s = produce(state, draft => {
-      mutation(draft)
-    })
-    props.listeners.forEach(l => l(s))
-    return s
-  }, props.initial())
+export interface ProviderProps {
+  onChange?: (state: State) => void
+  initialState?: () => State
+}
+export function Provider<T>(props: RenderableProps<T> & ProviderProps) {
+  const [state, mutate] = useReducer<State, Mutation<State>>(
+    (state, mutation) => {
+      const s = produce(state, draft => {
+        mutation(draft)
+      })
+      props.onChange && props.onChange(s)
+      return s
+    },
+    props.initialState ? props.initialState() : initialState
+  )
   return <ApplicationState.Provider value={[state, mutate]}>{props.children}</ApplicationState.Provider>
 }
 

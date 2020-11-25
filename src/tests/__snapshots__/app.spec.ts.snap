@@ -5,12 +5,8 @@ exports[`App renders 1`] = `
   id="app"
 >
   <Provider
-    initial={[Function]}
-    listeners={
-      Array [
-        [Function],
-      ]
-    }
+    initialState={[Function]}
+    onChange={[Function]}
   >
     <Component />
     <u>

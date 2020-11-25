@@ -15,7 +15,7 @@ import { loadState, writeState } from './local-storage'
 
 export default () => (
   <div id="app">
-    <Provider initial={loadState} listeners={[writeState]}>
+    <Provider initialState={loadState} onChange={writeState}>
       <Header />
       <Router>
         <BatchPage path="/batches/:id" />

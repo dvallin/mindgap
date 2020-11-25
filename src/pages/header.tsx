@@ -26,7 +26,7 @@ export default () => {
         </div>
         <p className="level-item has-text-centered">
           <Link href="/">
-            <img src={icon} alt="Mindgap" style={{ height: '60px' }} />
+            <img src={icon as string} alt="Mindgap" style={{ height: '60px' }} />
           </Link>
         </p>
         <div className="level-item has-text-centered">

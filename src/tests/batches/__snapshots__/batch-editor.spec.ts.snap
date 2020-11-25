@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders not found 1`] = `<Component />`;
+
+exports[`App with found batch renders batch 1`] = `
+<div
+  className="tile is-ancestor"
+>
+  <div
+    className="tile is-8 is-vertical is-parent"
+  >
+    <div
+      className="tile is-child"
+    >
+      <Component
+        name={
+          Object {
+            "actions": Array [],
+            "date": "2020-10-18:10:00:00Z",
+            "description": "",
+            "name": "",
+            "recipe": Object {
+              "id": "recipe1",
+              "scale": 1,
+            },
+          }
+        }
+        updateName={[Function]}
+      />
+      <div
+        className="content"
+      >
+        <Component
+          addStep={[Function]}
+          steps={Array []}
+          updateStep={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="tile is-parent"
+  >
+    <div
+      className="tile is-child box"
+    >
+      <Component
+        onSelect={[Function]}
+        placeholder="Select a base Recipe"
+        value="recipe1"
+      />
+      <input
+        className="input"
+        data-testid="recipe-scale-input"
+        max="100"
+        min="0"
+        onInput={[Function]}
+        step="1"
+        type="range"
+        value={1}
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -44,6 +44,7 @@ export default (props: Props) => {
                 .getOrElse(undefined)}
             />
             <input
+              data-testid="recipe-scale-input"
               className="input"
               step="1"
               min="0"

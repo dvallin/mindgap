@@ -27,7 +27,7 @@ export function simulateInput<P>(input: ShallowWrapper<P>, value: string | strin
   } else if (typeof value === 'object') {
     e = value.event
   }
-  const callback = input.prop('onInput')
+  const callback = input.prop('onInput') as (e: unknown) => void
   callback(e)
 }
 

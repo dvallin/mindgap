@@ -30,6 +30,7 @@ module.exports = {
     'react/no-unknown-property': ['error', { ignore: ['class'] }],
     'react/prefer-stateless-function': 1,
     '@typescript-eslint/explicit-function-return-type': 0,
+    '@typescript-eslint/no-unnecessary-type-assertion': 0,
     'react/display-name': 0,
   },
   settings: {

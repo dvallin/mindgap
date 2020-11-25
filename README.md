@@ -1,4 +1,6 @@
-# Mindgap fermanetation recipe editor
+# Fermentation recipe editor
+
+You can create Recipes and track your current projects using Batches.
 
 ## CLI Commands
 

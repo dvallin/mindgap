@@ -1,7 +1,7 @@
 {
   "name": "mindgap",
   "short_name": "mindgap",
-  "start_url": "mindgap/",
+  "start_url": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fff",

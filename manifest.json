@@ -2,6 +2,7 @@
   "name": "mindgap",
   "short_name": "mindgap",
   "start_url": "./",
+  "scope": ".",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fff",

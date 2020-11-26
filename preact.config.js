@@ -10,14 +10,18 @@ export default {
    * @param {WebpackConfigHelpers} helpers - object with useful helpers for working with the webpack config.
    * @param {object} options - this is mainly relevant for plugins (will always be empty in the config), default to an empty object
    **/
-  webpack(config, env, helpers, _options) {
-    config.output.publicPath = env.isProd ? '/mindgap' : ''
+  webpack(config, _env, helpers, _options) {
+    const publicPath = '/mindgap'
 
+    config.output.publicPath = `${publicPath}/`
     config.plugins.push(
       new helpers.webpack.DefinePlugin({
-        'process.env.PUBLIC_PATH': JSON.stringify(config.output.publicPath || ''),
+        'process.env.PUBLIC_PATH': JSON.stringify(publicPath),
       })
     )
+    if (config.devServer) {
+      config.devServer.publicPath = publicPath
+    }
 
     config.resolve.alias['preact-cli-entrypoint'] = resolve(process.cwd(), 'src', 'index')
   },

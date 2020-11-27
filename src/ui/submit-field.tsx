@@ -9,6 +9,7 @@ export interface Props {
   placeholder?: string
   type?: 'text' | 'number'
   buttonText?: string
+  disabled?: boolean
   onSubmit: (value: string) => void
 }
 
@@ -21,20 +22,21 @@ export default (props: Props) => {
         props.onSubmit(value)
         setValue('')
       }}
+      disabled={props.disabled}
     >
       {props.buttonText ? (
         <div className="field has-addons">
           <div className="control">
-            <EditField value={value} placeholder={props.placeholder} type={props.type} onInput={setValue} />
+            <EditField disabled={props.disabled} value={value} placeholder={props.placeholder} type={props.type} onInput={setValue} />
           </div>
           <div className="control">
-            <button type="submit" className="button is-info">
+            <button disabled={props.disabled} type="submit" className="button is-info">
               {props.buttonText}
             </button>
           </div>
         </div>
       ) : (
-        <EditField value={value} placeholder={props.placeholder} type={props.type} onInput={setValue} />
+        <EditField disabled={props.disabled} value={value} placeholder={props.placeholder} type={props.type} onInput={setValue} />
       )}
     </form>
   )

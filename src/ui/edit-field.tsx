@@ -9,6 +9,7 @@ export interface Props {
   value?: string
   type?: 'text' | 'number'
   narrow?: boolean
+  disabled?: boolean
   removePadding?: boolean
   inherit?: boolean
   onInput: (value: string) => void
@@ -25,6 +26,7 @@ export default (props: Props) => {
         .getOrElse(undefined)}
       style={props.removePadding ? { padding: 0 } : {}}
       type={props.type || 'text'}
+      disabled={props.disabled}
       placeholder={props.placeholder}
       value={props.value}
       width={props.narrow ? 'fit-content' : undefined}

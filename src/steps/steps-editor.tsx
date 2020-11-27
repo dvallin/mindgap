@@ -6,8 +6,10 @@ import StepEditor from './step-editor'
 
 export interface Props {
   steps: Step[]
+  disabled?: boolean
   addStep: (step: Step) => void
   updateStep: (index: number, step: Step) => void
+  deleteStep: (index: number) => void
 }
 
 export default (props: Props) => (
@@ -18,7 +20,7 @@ export default (props: Props) => (
         <thead>
           <tr>
             <th>Type</th>
-            <th colSpan={2}>Step</th>
+            <th colSpan={3}>Step</th>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +30,7 @@ export default (props: Props) => (
                 <td>
                   <div className="select">
                     <select
+                      disabled={props.disabled}
                       value={step.kind}
                       onChange={e => eventValue(e).map(v => props.updateStep(i, { ...empty(v as Step['kind']), note: step.note }))}
                     >
@@ -39,15 +42,18 @@ export default (props: Props) => (
                     </select>
                   </div>
                 </td>
-                <StepEditor step={step} updateStep={step => props.updateStep(i, step)} />
+                <StepEditor disabled={props.disabled} step={step} updateStep={step => props.updateStep(i, step)} />
+                <td>
+                  <button onClick={() => props.deleteStep(i)} className="delete" />
+                </td>
               </tr>
             )
           })}
         </tbody>
         <tfoot>
           <tr>
-            <td colSpan={3}>
-              <button className="button is-info" onClick={() => props.addStep(empty('addition'))}>
+            <td colSpan={4}>
+              <button disabled={props.disabled} className="button is-info" onClick={() => props.addStep(empty('addition'))}>
                 add
               </button>
             </td>

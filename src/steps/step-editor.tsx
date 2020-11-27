@@ -8,6 +8,7 @@ import EditText from '../ui/edit-text'
 
 export interface Props {
   step: Step
+  disabled?: boolean
   updateStep: (step: Step) => void
 }
 
@@ -15,6 +16,7 @@ export default (props: Props) => {
   const { step } = props
   const note = (
     <EditText
+      disabled={props.disabled}
       value={props.step.note}
       placeholder="note"
       onInput={value =>
@@ -32,6 +34,7 @@ export default (props: Props) => {
         <Fragment>
           <td>
             <IngredientsInlineEditor
+              disabled={props.disabled}
               ingredients={step.ingredients}
               addIngredient={name => {
                 props.updateStep(
@@ -68,6 +71,7 @@ export default (props: Props) => {
           <td>{note}</td>
           <td>
             <EditField
+              disabled={props.disabled}
               value={step.value}
               placeholder="value"
               onInput={value =>
@@ -81,6 +85,7 @@ export default (props: Props) => {
               narrow
             />
             <EditField
+              disabled={props.disabled}
               value={step.unit}
               placeholder="unit"
               onInput={unit =>
@@ -101,6 +106,7 @@ export default (props: Props) => {
         <Fragment>
           <td>
             <EditField
+              disabled={props.disabled}
               value={step.duration}
               placeholder="duration"
               onInput={duration =>

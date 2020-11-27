@@ -1,6 +1,6 @@
 import { h, Fragment } from 'preact'
 
-import { addIngredient, addStep, deleteIngredient, updateIngredient, updateName, updateStep } from '.'
+import { addIngredient, addStep, deleteIngredient, deleteStep, updateIngredient, updateName, updateStep } from '.'
 import { useApplicationState } from '../state'
 
 import { Id } from '../common'
@@ -31,6 +31,7 @@ export default (props: Props) => {
             steps={recipe.steps}
             addStep={step => mutate(addStep(props.id, step))}
             updateStep={(index, step) => mutate(updateStep(props.id, index, step))}
+            deleteStep={index => mutate(deleteStep(props.id, index))}
           />
         </div>
       </Fragment>

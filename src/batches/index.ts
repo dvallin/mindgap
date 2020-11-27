@@ -48,3 +48,15 @@ export function addStep(id: string, step: Step): Mutation<State> {
 export function updateStep(id: string, index: number, step: Step): Mutation<State> {
   return draft => Option.of(draft.batches[id]).map(r => (r.actions[index] = { ...r.actions[index], ...step }))
 }
+
+export function deleteStep(id: string, index: number): Mutation<State> {
+  return draft => Option.of(draft.batches[id]).map(r => r.actions.splice(index, 1))
+}
+
+export function closeBatch(id: string): Mutation<State> {
+  return draft => Option.of(draft.batches[id]).map(r => (r.done = new Date().toISOString()))
+}
+
+export function openBatch(id: string): Mutation<State> {
+  return draft => Option.of(draft.batches[id]).map(r => delete r.done)
+}

@@ -59,3 +59,7 @@ export function addStep(id: string, step: Step): Mutation<State> {
 export function updateStep(id: string, index: number, step: Step): Mutation<State> {
   return draft => Option.of(draft.recipes[id]).map(r => (r.steps[index] = step))
 }
+
+export function deleteStep(id: string, index: number): Mutation<State> {
+  return draft => Option.of(draft.recipes[id]).map(r => r.steps.splice(index, 1))
+}

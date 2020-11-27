@@ -17,19 +17,24 @@ export interface Props {
 
 export default (props: Props) => {
   const className = props.inherit ? 'input editable-field' : 'input'
+  const style: h.JSX.CSSProperties = {}
+  if (props.removePadding) {
+    style['padding'] = 0
+  }
+  if (props.narrow) {
+    style['width'] = 'fit-content'
+  }
   return (
     <input
       className={className}
       size={Option.of(props.value || props.placeholder)
         .map(s => s.length || 1)
-        .filter(() => props.narrow === true)
         .getOrElse(undefined)}
-      style={props.removePadding ? { padding: 0 } : {}}
+      style={style}
       type={props.type || 'text'}
       disabled={props.disabled}
       placeholder={props.placeholder}
       value={props.value}
-      width={props.narrow ? 'fit-content' : undefined}
       onInput={e => eventValue(e).map(props.onInput)}
     />
   )

@@ -11,7 +11,7 @@ export default () => {
   const recipes = Object.values(state.recipes).length
   return (
     <section className="section">
-      <nav className="level">
+      <nav className="level is-mobile">
         <div className="level-item has-text-centered">
           <Link path="/batches" params={{ done: 'false' }}>
             <p className="heading">Active</p>
@@ -26,7 +26,7 @@ export default () => {
         </div>
         <p className="level-item has-text-centered">
           <Link path="/">
-            <img src={icon as string} alt="Mindgap" style={{ height: '60px' }} />
+            <img src={icon as string} alt="Mindgap" width="50" height="50" style={{ height: '50px' }} />
           </Link>
         </p>
         <div className="level-item has-text-centered">

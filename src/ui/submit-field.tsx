@@ -18,9 +18,10 @@ export default (props: Props) => {
 
   return (
     <form
-      onSubmit={() => {
+      onSubmit={e => {
         props.onSubmit(value)
         setValue('')
+        e.preventDefault()
       }}
       disabled={props.disabled}
     >

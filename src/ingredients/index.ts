@@ -8,6 +8,6 @@ export interface Ingredient {
   unit?: Unit
 }
 
-export function scale(ingredient: Draft<Ingredient>, scale: number): void {
+export function scaleIngredient(ingredient: Draft<Ingredient>, scale: number): void {
   Option.of(ingredient.value).map(v => (ingredient.value = v * scale))
 }

@@ -21,6 +21,9 @@ export default {
     )
     if (config.devServer) {
       config.devServer.publicPath = publicPath
+      config.devServer.historyApiFallback = {
+        index: publicPath,
+      }
     }
 
     config.resolve.alias['preact-cli-entrypoint'] = resolve(process.cwd(), 'src', 'index')

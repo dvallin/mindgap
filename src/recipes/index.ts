@@ -1,7 +1,7 @@
-import { Draft } from 'immer'
+import produce from 'immer'
 import { Option } from 'lazy-space'
 import { event, Event } from '../common'
-import { Ingredient, scale as scaleIngredient } from '../ingredients'
+import { Ingredient, scaleIngredient } from '../ingredients'
 import { Name, name } from '../name'
 import { Mutation, State } from '../state'
 import { Step } from '../steps'
@@ -13,16 +13,18 @@ export interface Recipe extends Name, Event {
 
 export const recipe = (): Recipe => ({ ...name(), ...event(), ingredients: [], steps: [] })
 
-export function scale(recipe: Draft<Recipe>, scale: number): void {
-  recipe.ingredients.forEach(i => {
-    scaleIngredient(i, scale)
-  })
-  recipe.steps.forEach(s => {
-    if (s.kind === 'addition') {
-      s.ingredients.forEach(i => {
-        scaleIngredient(i, scale)
-      })
-    }
+export function scaleRecipe(recipe: Recipe, scale: number): Recipe {
+  return produce(recipe, r => {
+    r.ingredients.forEach(i => {
+      scaleIngredient(i, scale)
+    })
+    r.steps.forEach(s => {
+      if (s.kind === 'addition') {
+        s.ingredients.forEach(i => {
+          scaleIngredient(i, scale)
+        })
+      }
+    })
   })
 }
 

@@ -22,6 +22,7 @@ export default (props: Props) => (
             })
           )
         }
+        inherit
         removePadding
       />
     </h1>
@@ -36,6 +37,7 @@ export default (props: Props) => (
             })
           )
         }
+        inherit
         removePadding
       />
     </h2>

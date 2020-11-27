@@ -10,21 +10,25 @@ export interface Props {
   type?: 'text' | 'number'
   narrow?: boolean
   removePadding?: boolean
+  inherit?: boolean
   onInput: (value: string) => void
 }
 
-export default (props: Props) => (
-  <input
-    className="input editable-field"
-    size={Option.of(props.value)
-      .filter(() => props.narrow === true)
-      .map(s => s.length || 1)
-      .getOrElse(undefined)}
-    style={props.removePadding ? { padding: 0 } : {}}
-    type={props.type || 'text'}
-    placeholder={props.placeholder}
-    value={props.value}
-    width={props.narrow ? 'fit-content' : undefined}
-    onInput={e => eventValue(e).map(props.onInput)}
-  />
-)
+export default (props: Props) => {
+  const className = props.inherit ? 'input editable-field' : 'input'
+  return (
+    <input
+      className={className}
+      size={Option.of(props.value || props.placeholder)
+        .map(s => s.length || 1)
+        .filter(() => props.narrow === true)
+        .getOrElse(undefined)}
+      style={props.removePadding ? { padding: 0 } : {}}
+      type={props.type || 'text'}
+      placeholder={props.placeholder}
+      value={props.value}
+      width={props.narrow ? 'fit-content' : undefined}
+      onInput={e => eventValue(e).map(props.onInput)}
+    />
+  )
+}

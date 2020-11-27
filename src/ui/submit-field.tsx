@@ -1,7 +1,7 @@
 import { h } from 'preact'
 import { useState } from 'preact/hooks'
 
-import { eventValue } from '../preact-helpers'
+import EditField from './edit-field'
 
 import './ui.css'
 
@@ -15,29 +15,6 @@ export interface Props {
 export default (props: Props) => {
   const [value, setValue] = useState('')
 
-  const input = (
-    <input
-      className="input"
-      type={props.type || 'text'}
-      placeholder={props.placeholder}
-      value={value}
-      onInput={e => eventValue(e).map(setValue)}
-    />
-  )
-
-  const Regular = () => (
-    <div className="field has-addons">
-      <div className="control">{input}</div>
-      <div className="control">
-        <button type="submit" className="button is-info">
-          {props.buttonText}
-        </button>
-      </div>
-    </div>
-  )
-
-  const Narrow = () => input
-
   return (
     <form
       onSubmit={() => {
@@ -45,7 +22,20 @@ export default (props: Props) => {
         setValue('')
       }}
     >
-      {props.buttonText ? <Regular /> : <Narrow />}
+      {props.buttonText ? (
+        <div className="field has-addons">
+          <div className="control">
+            <EditField value={value} placeholder={props.placeholder} type={props.type} onInput={setValue} />
+          </div>
+          <div className="control">
+            <button type="submit" className="button is-info">
+              {props.buttonText}
+            </button>
+          </div>
+        </div>
+      ) : (
+        <EditField value={value} placeholder={props.placeholder} type={props.type} onInput={setValue} />
+      )}
     </form>
   )
 }

@@ -23,6 +23,7 @@ export default (props: Props) => (
             })
           )
         }
+        inherit
       />
     </td>
     <td>
@@ -41,6 +42,7 @@ export default (props: Props) => (
             })
           )
         }
+        inherit
       />
     </td>
     <td>
@@ -54,6 +56,7 @@ export default (props: Props) => (
             })
           )
         }
+        inherit
       />
     </td>
     <td>

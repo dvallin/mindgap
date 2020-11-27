@@ -35,7 +35,7 @@ export default (props: Props) => (
         </tbody>
         <tfoot>
           <tr>
-            <td colSpan={3}>
+            <td colSpan={4}>
               <SubmitField placeholder="name" buttonText="add" onSubmit={name => props.addIngredient(name)} />
             </td>
           </tr>

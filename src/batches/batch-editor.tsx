@@ -12,6 +12,7 @@ import RecipeComponent from '../recipes/recipe'
 import RecipeSelect from '../recipes/recipe-select'
 import NotFound from '../pages/not-found'
 import StepsEditor from '../steps/steps-editor'
+import { scaleRecipe } from '../recipes'
 
 export interface Props {
   id: Id
@@ -60,7 +61,7 @@ export default (props: Props) => {
               type="range"
             />
             {Option.of(batch.recipe)
-              .map(({ id }) => state.recipes[id])
+              .flatMap(({ id, scale }) => Option.of(state.recipes[id]).map(r => scaleRecipe(r, scale)))
               .unwrap(
                 recipe => (
                   <RecipeComponent recipe={recipe} />

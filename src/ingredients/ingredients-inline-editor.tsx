@@ -17,7 +17,7 @@ export default (props: Props) => (
     <div className="field is-grouped is-grouped-multiline mb-2">
       {props.ingredients.map(({ name, value, unit }, i) => (
         <span key={i} className="tag mr-1">
-          <EditField value={name} onInput={v => props.updateIngredient(i, { name: v, value, unit })} narrow />
+          <EditField value={name} onInput={v => props.updateIngredient(i, { name: v, value, unit })} narrow inherit />
           <button className="delete is-small" onClick={() => props.deleteIngredient(i)}></button>
         </span>
       ))}

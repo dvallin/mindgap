@@ -69,6 +69,7 @@ export default (props: Props) => {
           <td>
             <EditField
               value={step.value}
+              placeholder="value"
               onInput={value =>
                 props.updateStep(
                   produce(step, d => {
@@ -76,10 +77,12 @@ export default (props: Props) => {
                   })
                 )
               }
+              inherit
               narrow
             />
             <EditField
               value={step.unit}
+              placeholder="unit"
               onInput={unit =>
                 props.updateStep(
                   produce(step, d => {
@@ -87,6 +90,7 @@ export default (props: Props) => {
                   })
                 )
               }
+              inherit
               narrow
             />
           </td>
@@ -98,6 +102,7 @@ export default (props: Props) => {
           <td>
             <EditField
               value={step.duration}
+              placeholder="duration"
               onInput={duration =>
                 props.updateStep(
                   produce(step, d => {
@@ -105,6 +110,8 @@ export default (props: Props) => {
                   })
                 )
               }
+              inherit
+              narrow
             />
           </td>
           <td>{note}</td>

@@ -43,42 +43,48 @@ export const BatchRecipeEdit = (props: { id: string; batch: Batch }) => {
   const [state, mutate] = useApplicationState()
   return (
     <Fragment>
-      <RecipeSelect
-        onSelect={recipe => mutate(updateRecipe(props.id, recipe))}
-        placeholder="Select a base Recipe"
-        value={Option.of(props.batch.recipe)
-          .map(r => r.id)
-          .getOrElse(undefined)}
-      />
-      <input
-        data-testid="recipe-scale-input"
-        className="input"
-        step="1"
-        min="0"
-        max="100"
-        value={Option.of(props.batch.recipe)
-          .map(r => r.scale)
-          .getOrElse(0)}
-        onInput={e =>
-          eventValue(e)
-            .map(Number.parseFloat)
-            .map(v => mutate(updateRecipeScale(props.id, v)))
-        }
-        type="range"
-      />
+      <h4 className="title is-4">Base Recipe</h4>
+      <div className="block">
+        <RecipeSelect
+          onSelect={recipe => mutate(updateRecipe(props.id, recipe))}
+          placeholder="Select a base Recipe"
+          value={Option.of(props.batch.recipe)
+            .map(r => r.id)
+            .getOrElse(undefined)}
+        />
+      </div>
+      <div className="block"></div>
       {Option.of(props.batch.recipe)
         .flatMap(({ id, scale }) => Option.of(state.recipes[id]).map(r => scaleRecipe(r, scale)))
         .unwrap(
           recipe => (
-            <RecipeComponent
-              recipe={recipe}
-              disabled={props.batch.done !== undefined}
-              onStepSelect={step => {
-                if (!props.batch.done) {
-                  mutate(addStep(props.id, step))
+            <Fragment>
+              <input
+                data-testid="recipe-scale-input"
+                className="input"
+                step="1"
+                min="1"
+                max="30"
+                value={Option.of(props.batch.recipe)
+                  .map(r => r.scale)
+                  .getOrElse(1)}
+                onInput={e =>
+                  eventValue(e)
+                    .map(Number.parseFloat)
+                    .map(v => mutate(updateRecipeScale(props.id, v)))
                 }
-              }}
-            />
+                type="range"
+              />
+              <RecipeComponent
+                recipe={recipe}
+                disabled={props.batch.done !== undefined}
+                onStepSelect={step => {
+                  if (!props.batch.done) {
+                    mutate(addStep(props.id, step))
+                  }
+                }}
+              />
+            </Fragment>
           ),
           () => (
             <Fragment></Fragment>
@@ -99,7 +105,7 @@ export default (props: Props) => {
           </div>
         </div>
         <div className="tile is-parent">
-          <div className="tile is-child box">
+          <div className="tile is-child">
             <BatchRecipeEdit batch={batch} id={props.id} />
           </div>
         </div>

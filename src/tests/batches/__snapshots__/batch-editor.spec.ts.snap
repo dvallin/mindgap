@@ -62,7 +62,7 @@ exports[`BatchEditor renders batch 1`] = `
     className="tile is-parent"
   >
     <div
-      className="tile is-child box"
+      className="tile is-child"
     >
       <Component
         batch={

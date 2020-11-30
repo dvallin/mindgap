@@ -11,56 +11,59 @@ export interface Props {
   ingredient: Ingredient
 }
 
-export default (props: Props) => (
-  <tr>
-    <td>
-      <EditField
-        value={props.ingredient.name}
-        onInput={name =>
-          props.updateIngredient(
-            produce(props.ingredient, draft => {
-              draft.name = name
-            })
-          )
-        }
-        inherit
-      />
-    </td>
-    <td>
-      <EditField
-        placeholder="amount"
-        type="number"
-        value={Option.of(props.ingredient.value)
-          .map(v => v.toString())
-          .getOrElse('')}
-        onInput={v =>
-          props.updateIngredient(
-            produce(props.ingredient, draft => {
-              draft.value = Try.lift(Number.parseFloat(v))
-                .filter(Number.isFinite)
-                .getOrElse(undefined)
-            })
-          )
-        }
-        inherit
-      />
-    </td>
-    <td>
-      <EditField
-        placeholder="unit"
-        value={Option.of(props.ingredient.unit).getOrElse('')}
-        onInput={unit =>
-          props.updateIngredient(
-            produce(props.ingredient, draft => {
-              draft.unit = unit || undefined
-            })
-          )
-        }
-        inherit
-      />
-    </td>
-    <td>
-      <button onClick={() => props.deleteIngredient()} className="delete" />
-    </td>
-  </tr>
-)
+export default (props: Props) => {
+  const { ingredient, updateIngredient } = props
+  return (
+    <div class="columns is-mobile">
+      <div class="column is-4-mobile">
+        <EditField
+          value={ingredient.name}
+          onInput={name =>
+            updateIngredient(
+              produce(ingredient, draft => {
+                draft.name = name
+              })
+            )
+          }
+          inherit
+        />
+      </div>
+      <div class="column is-3-mobile">
+        <EditField
+          placeholder="value"
+          type="number"
+          value={Option.of(ingredient.value)
+            .map(v => v.toString())
+            .getOrElse('')}
+          onInput={v =>
+            updateIngredient(
+              produce(ingredient, draft => {
+                draft.value = Try.lift(Number.parseFloat(v))
+                  .filter(Number.isFinite)
+                  .getOrElse(undefined)
+              })
+            )
+          }
+          inherit
+        />
+      </div>
+      <div class="column is-3-mobile">
+        <EditField
+          placeholder="unit"
+          value={Option.of(ingredient.unit).getOrElse('')}
+          onInput={unit =>
+            updateIngredient(
+              produce(ingredient, draft => {
+                draft.unit = unit || undefined
+              })
+            )
+          }
+          inherit
+        />
+      </div>
+      <div class="column is-2-mobile">
+        <button className="delete" onClick={props.deleteIngredient} />
+      </div>
+    </div>
+  )
+}

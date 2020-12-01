@@ -1,10 +1,10 @@
 import { h, FunctionComponent } from 'preact'
 import { shallow, ShallowWrapper } from 'enzyme'
 
-import { State, initialState } from '../state'
-import * as ApplicationState from '../state'
+import { State, initialState } from '../src/state'
+import * as ApplicationState from '../src/state'
 import produce from 'immer'
-import { Batch, batch } from '../batches'
+import { Batch, batch } from '../src/batches'
 
 export const testDate = '2020-10-18:10:00:00Z'
 export const testBatch: Batch = { ...batch(), date: testDate }

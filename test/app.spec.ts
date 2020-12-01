@@ -1,4 +1,4 @@
-import App from '../app'
+import App from '../src/app'
 import { createShallowMount } from './test-utils'
 
 describe('App', () => {

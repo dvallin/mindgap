@@ -1,11 +1,11 @@
-import BatchEditor, { BatchEdit } from '../../batches/batch-editor'
+import BatchEditor, { BatchEdit } from '../../src/batches/batch-editor'
 
-import { initialState, State } from '../../state'
+import { initialState, State } from '../../src/state'
 
-import NotFound from '../../pages/not-found'
+import NotFound from '../../src/pages/not-found'
 import produce from 'immer'
 import { createShallowMount, mockApplicationState, testBatch } from '../test-utils'
-import NameEditor, { Props as NameProps } from '../../name/name-editor'
+import NameEditor, { Props as NameProps } from '../../src/name/name-editor'
 
 describe('BatchEditor', () => {
   const mount = createShallowMount(BatchEditor, { id: 'batch1' })

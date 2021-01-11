@@ -1,4 +1,5 @@
 .vscode
+.envrc
 size-plugin.json
 node_modules
 coverage

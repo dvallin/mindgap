@@ -3,9 +3,11 @@ import Link from '../link'
 import { useApplicationState } from '../state'
 
 import icon from '../assets/icons/large.svg'
+import { useI18N } from '../i18n'
 
 export default () => {
   const [state] = useApplicationState()
+  const { active, done } = useI18N()
   const batches = Object.values(state.batches).length
   const batchesDone = Object.values(state.batches).filter(b => b.done).length
   const recipes = Object.values(state.recipes).length
@@ -14,13 +16,13 @@ export default () => {
       <nav className="level is-mobile">
         <div className="level-item has-text-centered">
           <Link path="/batches" params={{ done: 'false' }}>
-            <p className="heading">Active</p>
+            <p className="heading">{active}</p>
             <p className="title">{batches - batchesDone}</p>
           </Link>
         </div>
         <div className="level-item has-text-centered">
           <Link path="/batches" params={{ done: 'true' }}>
-            <p className="heading">Done</p>
+            <p className="heading">{done}</p>
             <p className="title">{batchesDone}</p>
           </Link>
         </div>

@@ -10,24 +10,27 @@ import RecipesPage from './pages/recipes-page'
 import BatchPage from './pages/batch-page'
 import RecipePage from './pages/recipe-page'
 
-import { Provider } from './state'
+import { Provider as ApplicationStateProvider } from './state'
+import { Provider as I18NProvider } from './i18n'
 import { loadState, writeState } from './local-storage'
 import { makePath } from './path'
 
 export default () => (
   <div id="app">
-    <Provider initialState={loadState} onChange={writeState}>
-      <Header />
-      <Router>
-        <BatchPage path={makePath('/batches/:id')} />
-        <BatchesPage path={makePath('/batches')} />
+    <I18NProvider locale="tlh">
+      <ApplicationStateProvider initialState={loadState} onChange={writeState}>
+        <Header />
+        <Router>
+          <BatchPage path={makePath('/batches/:id')} />
+          <BatchesPage path={makePath('/batches')} />
 
-        <RecipePage path={makePath('/recipes/:id')} />
-        <RecipesPage path={makePath('/recipes')} />
+          <RecipePage path={makePath('/recipes/:id')} />
+          <RecipesPage path={makePath('/recipes')} />
 
-        <LandingPage path={makePath('/')} />
-        <NotFound default />
-      </Router>
-    </Provider>
+          <LandingPage path={makePath('/')} />
+          <NotFound default />
+        </Router>
+      </ApplicationStateProvider>
+    </I18NProvider>
   </div>
 )

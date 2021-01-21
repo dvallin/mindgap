@@ -25,7 +25,7 @@
   ],
   "dependencies": {
     "dayjs": "^1.9.6",
-    "immer": "^8.0.0",
+    "immer": "^8.0.1",
     "lazy-space": "^0.4.2",
     "preact": "^10.3.1",
     "preact-markup": "^2.0.0",
